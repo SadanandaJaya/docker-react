@@ -1,0 +1,20 @@
+version: '3'
+services:
+  web: # name of the service it can be anything you want
+    # restart: always # this command is used to restart the container whenever it fails or stops working
+    build:
+      context: . # here context is used to check where the files and folders are to be checked for.In this case it is used to refer to current directory
+      dockerfile: Dockerfile.dev # this is used to check for the name of the file to check for in current directory
+    ports:
+      - '3000:3000' # this is for port mapping
+    volumes:
+      - /app/node_modules # this is to freeze the node_modules inside container
+      - .:/app # this is to reference everything from docker container to local directory location outside container
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app # first is the current working directory : /app the work directory for the project
+    command: ['npm', 'run', 'test']

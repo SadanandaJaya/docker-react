@@ -1,0 +1,15 @@
+# this is for the local development environment
+
+FROM node:16-alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+
+RUN npm install
+
+COPY . . 
+#make sure to delete the node_modules for building the container otherwise it will copy it
+
+CMD ["npm","run","start"]
+
