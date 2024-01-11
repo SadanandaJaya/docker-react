@@ -1,4 +1,4 @@
-##### This contains docker file with  multi-stage deployment
+# This contains docker file with  multi-stage deployment
 
 
 # Getting Started with Create React App
